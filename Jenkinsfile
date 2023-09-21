@@ -23,7 +23,9 @@ pipeline {
                 }
             }
             steps {
-                sh 'su -c "go test -v -short --count=1 $(go list ./...)"'
+                withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin", "GOBIN=${root}/bin", "GOPATH=${root}/go"]) {
+                    sh 'go test -v -short --count=1 $(go list ./...)'
+                }
             }
         }
         
