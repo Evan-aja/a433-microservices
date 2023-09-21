@@ -5,11 +5,15 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID){
                     sh '''
+                        ls -la
+                        
                         # Menginstal hadolint
+                        
                         curl -Lo hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
                         chmod +x ./hadolint
                         
                         # Menjalankan hadolint terhadap berkas Dockerfile
+                        
                         ./hadolint ./Dockerfile
                     '''
                 }
