@@ -20,12 +20,8 @@ pipeline {
             agent {
                 docker {
                     image 'golang:1.15-alpine'
+                    args '-u root'
                 }
-            }
-            environment {
-                GOPATH = "/root/go"
-                GOBIN = "/root/go/bin"
-                PATH = "/root/go/bin:$PATH"
             }
             steps {
                 sh '''
