@@ -23,17 +23,11 @@ pipeline {
                     args '-u root'
                 }
             }
+            environment {
+                CGO_ENABLED = 0
+            }
             steps {
-                sh '''
-                    ls -al
-                    echo
-                    echo
-                    ls -al ~
-                    echo
-                    echo
-                    ls -al /
-                    go test -v -short --count=1 $(go list ./...)
-                '''
+                sh 'go test -v -short --count=1 $(go list ./...)'
             }
         }
         
