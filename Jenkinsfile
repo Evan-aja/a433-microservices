@@ -5,7 +5,7 @@ pipeline {
             steps {
                 dir(path: env.BUILD_ID){
                     sh '''
-                        ls -la
+                        ls -la ..
                         
                         # Menginstal hadolint
                         
