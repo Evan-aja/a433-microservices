@@ -23,9 +23,9 @@ pipeline {
                 }
             }
             environment {
-                GOPATH = "${root}/go"
-                GOBIN = "${root}/go/bin"
-                PATH = "${root}/go/bin:$PATH"
+                GOPATH = "/root/go"
+                GOBIN = "/root/go/bin"
+                PATH = "/root/go/bin:$PATH"
             }
             steps {
                 sh 'go test -v -short --count=1 $(go list ./...)'
