@@ -22,10 +22,13 @@ pipeline {
                     image 'golang:1.15-alpine'
                 }
             }
+            environment {
+                GOPATH = "${pwd()}/go"
+                GOBIN = "${pwd()}/go/bin"
+                PATH = "${pwd()}/go/bin:$PATH"
+            }
             steps {
-                withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin", "GOBIN=${root}/bin", "GOPATH=${root}/go"]) {
-                    sh 'go test -v -short --count=1 $(go list ./...)'
-                }
+                sh 'go test -v -short --count=1 $(go list ./...)'
             }
         }
         
