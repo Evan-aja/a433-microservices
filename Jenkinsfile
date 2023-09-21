@@ -28,7 +28,16 @@ pipeline {
                 PATH = "/root/go/bin:$PATH"
             }
             steps {
-                sh 'go test -v -short --count=1 $(go list ./...)'
+                sh '''
+                    ls -al
+                    echo
+                    echo
+                    ls -al ~
+                    echo
+                    echo
+                    ls -al /
+                    go test -v -short --count=1 $(go list ./...)
+                '''
             }
         }
         
