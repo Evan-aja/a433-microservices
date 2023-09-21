@@ -4,8 +4,6 @@ pipeline {
         stage('Lint Dockerfile') {
             steps {
                 sh '''
-                    ls -la ..
-                    
                     # Menginstal hadolint
                     
                     curl -Lo hadolint https://github.com/hadolint/hadolint/releases/latest/download/hadolint-Linux-x86_64
@@ -25,7 +23,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'go test -v -short --count=1 $(go list ./...)'
+                sh 'su -c "go test -v -short --count=1 $(go list ./...)"'
             }
         }
         
